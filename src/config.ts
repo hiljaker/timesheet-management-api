@@ -2,7 +2,6 @@ import * as Joi from 'joi';
 
 export interface JWT {
   secret: string;
-  expiresIn: string;
 }
 
 export interface App {
@@ -20,7 +19,6 @@ export const configValidator = Joi.object({
   APP_PORT: Joi.number().required(),
   DATABASE_URL: Joi.string().required(),
   JWT_SECRET: Joi.string().required(),
-  JWT_EXPIRES_IN: Joi.string().required(),
 });
 
 export const configLoader = (): Env => ({
@@ -30,6 +28,5 @@ export const configLoader = (): Env => ({
   },
   jwt: {
     secret: process.env.JWT_SECRET,
-    expiresIn: process.env.JWT_EXPIRES_IN,
   },
 });
