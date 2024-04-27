@@ -3,7 +3,7 @@ import { Project } from '@prisma/client';
 import { Response } from 'express';
 import { ProjectService } from './project.service';
 import { CreateProjectDTO } from './dto/create-project.dto';
-import { ResponseType } from 'src/types/response.type';
+import { ResponseType } from '../types/response.type';
 
 @Controller('project')
 export class ProjectController {

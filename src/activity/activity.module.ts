@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ActivityService } from './activity.service';
 import { ActivityController } from './activity.controller';
-import { TokenModule } from 'src/token/token.module';
+import { TokenModule } from '../token/token.module';
 
 @Module({
   imports: [TokenModule],

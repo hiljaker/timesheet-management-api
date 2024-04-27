@@ -1,7 +1,7 @@
 import { Injectable, UnprocessableEntityException } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateProjectDTO } from './dto/create-project.dto';
 import { Project } from '@prisma/client';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class ProjectService {

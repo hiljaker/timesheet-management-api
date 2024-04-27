@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { UpsertActivityDTO } from './dto/upsert-activity.dto';
 import { Activity } from '@prisma/client';
 import { differenceInMilliseconds } from 'date-fns';
+import { PrismaService } from '../prisma/prisma.service';
 
 type Order = 'asc' | 'desc';
 

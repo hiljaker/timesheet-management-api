@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { SaveEmployeeDTO } from './dto/save-employee.dto';
 import { Employee } from '@prisma/client';
-import { TokenService } from 'src/token/token.service';
+import { TokenService } from '../token/token.service';
 
 @Injectable()
 export class EmployeeService {

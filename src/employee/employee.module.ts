@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { TokenModule } from 'src/token/token.module';
+import { TokenModule } from '../token/token.module';
 import { EmployeeService } from './employee.service';
 import { EmployeeController } from './employee.controller';
 

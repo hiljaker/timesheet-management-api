@@ -11,7 +11,7 @@ import { EmployeeService } from './employee.service';
 import { Employee } from '@prisma/client';
 import { SaveEmployeeDTO } from './dto/save-employee.dto';
 import { Request, Response } from 'express';
-import { ResponseType } from 'src/types/response.type';
+import { ResponseType } from '../types/response.type';
 import { EmployeeGuard } from './employee.guard';
 
 @Controller('employee')

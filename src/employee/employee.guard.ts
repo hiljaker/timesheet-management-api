@@ -5,8 +5,8 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Request } from 'express';
-import { TokenService } from 'src/token/token.service';
-import { JWTPayload } from 'src/types/jwt-payload.type';
+import { TokenService } from '../token/token.service';
+import { JWTPayload } from '../types/jwt-payload.type';
 
 declare module 'express' {
   interface Request {

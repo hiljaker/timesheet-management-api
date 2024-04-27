@@ -12,8 +12,8 @@ import { ActivityService } from './activity.service';
 import { Request, Response } from 'express';
 import { Activity } from '@prisma/client';
 import { UpsertActivityDTO } from './dto/upsert-activity.dto';
-import { EmployeeGuard } from 'src/employee/employee.guard';
-import { ResponseType } from 'src/types/response.type';
+import { EmployeeGuard } from '../employee/employee.guard';
+import { ResponseType } from '../types/response.type';
 
 type Order = 'asc' | 'desc';
 
