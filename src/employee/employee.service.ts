@@ -12,11 +12,12 @@ export class EmployeeService {
   ) {}
 
   async save(
+    employeeId: number,
     body: SaveEmployeeDTO,
   ): Promise<{ employee: Employee; accessToken: string }> {
     try {
       const employee = await this.prisma.employee.upsert({
-        where: { name: body.name },
+        where: { id: employeeId },
         update: body,
         create: body,
       });

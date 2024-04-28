@@ -21,12 +21,15 @@ export class EmployeeController {
   @UseGuards(EmployeeGuard)
   @Post('')
   async save(
+    @Req() req: Request,
     @Res()
     res: Response<ResponseType<{ employee: Employee; accessToken: string }>>,
     @Body() body: SaveEmployeeDTO,
   ) {
     try {
-      const result = await this.employeeService.save(body);
+      const employeeId = +req.user.id;
+
+      const result = await this.employeeService.save(employeeId, body);
 
       return res.send({
         message: 'Successfully saved user',
