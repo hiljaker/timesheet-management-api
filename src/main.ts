@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
-import { ValidationPipe } from '@nestjs/common';
+import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
@@ -10,7 +10,13 @@ async function bootstrap() {
   const CLIENT = config.getOrThrow<string>('app.client');
 
   app.enableCors({
-    origin: CLIENT,
+    origin: (origin, cb) => {
+      if (CLIENT === origin) {
+        cb(null, true);
+      } else {
+        cb(new BadRequestException('client not allowed by CORS'));
+      }
+    },
     credentials: true,
   });
   app.useGlobalPipes(new ValidationPipe());
