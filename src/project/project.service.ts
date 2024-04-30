@@ -14,9 +14,7 @@ export class ProjectService {
       });
 
       if (project) {
-        throw new UnprocessableEntityException(
-          'Project with this name already exists',
-        );
+        throw new UnprocessableEntityException('Nama proyek sudah ada');
       }
 
       const newProject = await this.prisma.project.create({
@@ -24,6 +22,15 @@ export class ProjectService {
       });
 
       return { project: newProject };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async findAll(): Promise<{ projects: Project[] }> {
+    try {
+      const projects = await this.prisma.project.findMany();
+      return { projects };
     } catch (error) {
       throw error;
     }

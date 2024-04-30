@@ -31,13 +31,19 @@ export class ActivityController {
     try {
       const activityId = +req.params.activityId;
 
+      const { editMode, ...payload } = body;
+
       const result = await this.activityService.updateOrCreate(
         activityId,
-        body,
+        payload,
       );
 
+      const message = editMode
+        ? 'Berhasil menyunting kegiatan'
+        : 'Berhasil menambahkan kegiatan';
+
       return res.send({
-        message: 'Success creating activity',
+        message,
         result,
       });
     } catch (error) {
@@ -125,7 +131,7 @@ export class ActivityController {
       await this.activityService.delete(activityId);
 
       return res.send({
-        message: 'Success deleting activity',
+        message: 'Berhasil menghapus kegiatan',
       });
     } catch (error) {
       throw error;

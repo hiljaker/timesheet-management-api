@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res } from '@nestjs/common';
 import { Project } from '@prisma/client';
 import { Response } from 'express';
 import { ProjectService } from './project.service';
@@ -18,6 +18,17 @@ export class ProjectController {
       const result = await this.projectService.create(body);
 
       return res.send({ message: 'Success creating new project', result });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  @Get('')
+  async findAll(@Res() res: Response<ResponseType<{ projects: Project[] }>>) {
+    try {
+      const result = await this.projectService.findAll();
+
+      return res.send({ message: 'Success retrieving projects', result });
     } catch (error) {
       throw error;
     }

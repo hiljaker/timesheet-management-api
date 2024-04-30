@@ -27,12 +27,12 @@ export class EmployeeController {
     @Body() body: SaveEmployeeDTO,
   ) {
     try {
-      const employeeId = +req.user.id;
+      const employeeId = +req.user.id || 0;
 
       const result = await this.employeeService.save(employeeId, body);
 
       return res.send({
-        message: 'Successfully saved user',
+        message: 'Berhasil menyimpan karyawan',
         result,
       });
     } catch (error) {

@@ -1,6 +1,16 @@
-import { IsDateString, IsNumber, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsDateString,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class UpsertActivityDTO {
+  @IsBoolean()
+  @IsOptional()
+  readonly editMode?: boolean;
+
   @IsNumber()
   readonly employeeId: number;
 
