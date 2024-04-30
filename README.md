@@ -32,6 +32,16 @@
 $ yarn install
 ```
 
+## Preparing the app
+
+Create a schema in MySQL and then
+create .env file in root project based on .env.template and run the code below
+
+```bash
+# Migrate database
+$ yarn migrate:dev
+```
+
 ## Running the app
 
 ```bash
@@ -43,19 +53,6 @@ $ yarn run start:dev
 
 # production mode
 $ yarn run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
 ```
 
 ## Support
