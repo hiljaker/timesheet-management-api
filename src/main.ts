@@ -8,15 +8,18 @@ async function bootstrap() {
   const config = app.get(ConfigService);
   const PORT = config.getOrThrow<string>('app.port');
   const CLIENT = config.getOrThrow<string>('app.client');
+  const isProduction = config.get<string>('env') === 'production';
 
   app.enableCors({
-    origin: (origin, cb) => {
-      if (CLIENT === origin) {
-        cb(null, true);
-      } else {
-        cb(new BadRequestException('client not allowed by CORS'));
-      }
-    },
+    origin: isProduction
+      ? (origin, cb) => {
+          if (CLIENT === origin) {
+            cb(null, true);
+          } else {
+            cb(new BadRequestException('Client is not allowed by CORS'));
+          }
+        }
+      : '*',
     credentials: true,
   });
   app.useGlobalPipes(new ValidationPipe());
